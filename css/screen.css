@@ -1,0 +1,148 @@
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+:root {
+    --main-bg-color: #134B70;
+    --main-text-color: #333;
+    --accent-color: #508C9B;
+    --light-color: #EEEEEE;
+    --merriweather-regular: "Merriweather", serif;
+}
+
+/*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+.merriweather-regular-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.merriweather-bold-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.merriweather-black-italic {
+    font-family: "Merriweather", serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+body {
+    font-family: var(--merriweather-regular);
+    color: var(--main-text-color);
+    margin: 0;
+    padding: 0;
+    font-size: 16px; /* Set regular text to 16px */
+}
+
+header {
+    background-color: var(--main-bg-color);
+    padding: 20px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.site-title {
+    color: var(--light-color);
+    font-size: 24px;
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 30px;
+}
+
+nav ul li a {
+    color: var(--light-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    text-decoration: none;
+}
+
+nav ul li a.active::after,
+nav ul li a:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 2px;
+    background-color: var(--light-color);
+}
+
+nav ul li a.active::before,
+nav ul li a:hover::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    height: 2px;
+    background-color: var(--light-color);
+}
+
+main {
+    padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--bebas-neue-regular);
+    color: var(--main-text-color);
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+.o-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 78em; /* 78 * 16px = 11248 */
+    width: 100%;
+}
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+.c-about{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+.c-about__image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+/*------------------------------------*\
+#MEDIA
+\*------------------------------------*/
