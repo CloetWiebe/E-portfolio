@@ -112,6 +112,7 @@ main {
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--bebas-neue-regular);
     color: var(--main-text-color);
+    margin-top: 40px;
 }
 
 /*------------------------------------*\
@@ -127,17 +128,45 @@ h1, h2, h3, h4, h5, h6 {
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
-.c-about{
+.c-about {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 24px;
 }
+
 .c-about__image {
     border-radius: 50%;
     width: 150px;
     height: 150px;
     object-fit: cover;
+}
+
+.c-project {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Ensure both elements stretch to the same height */
+    gap: 32px;
+    margin-top: 32px;
+    margin-bottom: 64px;
+}
+
+.c-project__video {
+    flex: 1;
+    height: 100%;
+}
+
+.c-project__video iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio */
+    flex-grow: 1;
+}
+
+.c-project__text {
+    flex: 1;
+    font-size: larger;
+    line-height: 24px;
 }
 
 /*------------------------------------*\
