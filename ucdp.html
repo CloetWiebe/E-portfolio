@@ -1,31 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-portfolio</title>
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/screen.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header>
-        <div class="header-container">
-            <h1 class="site-title">E-portfolio</h1>
-            <nav>
-                <ul>
-                    <li><a href="about-me.html">About Me</a></li>
-                    <li><a href="about-site.html" >About Site</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="ucdp.html" class="active">UCDP</a></li>
-                    <li><a href="projects.html" >Projects</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header
-</body>
+      <div class="header-container">
+        <h1 class="site-title">E-portfolio</h1>
+        <nav>
+          <ul>
+            <li><a href="about-me.html">About Me</a></li>
+            <li><a href="about-site.html">About Site</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="ucdp.html" class="active">UCDP</a></li>
+            <li><a href="projects.html">Projects</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="o-container__ucdp">
+        <section id="abstract">
+          <h1 class="c-ucdp__title">Abstract</h1>
+          <p class="c-ucdp__text">
+            This UCDP (User-Centered Design Project) explores the question, “How
+            can a 3D avatar navigate indoors via Azure Spatial Anchors on the
+            HoloLens 2?” During this research, possible solutions were first
+            sought through a literature review. Then, a Unity application was
+            developed based on the findings. The proposed solution consists of a
+            Unity application that retrieves preset paths from the cloud. These
+            paths are built from Azure Spatial Anchors and are thus
+            preconfigured. The user has no ability to set up their own paths.
+            Through these spatial anchors, the 3D avatar navigates to its
+            destination. The main technologies used in this project are Azure
+            Spatial Anchors, an Azure Function App as API, and Cosmos DB for
+            storing the data. All in all, this research clearly demonstrated how
+            a 3D avatar can navigate indoors. However, further improvement is
+            possible on a larger scale.
+          </p>
+        </section>
+
+        <section id="azure-spatial-anchors">
+          <h1>What are Azure Spatial Anchors?</h1>
+          <p>
+            Azure Spatial Anchors is a cloud-based platform developed by
+            Microsoft that allows developers to create virtual reference points,
+            or “anchors,” in physical space. These anchors are persistent and
+            can be shared by multiple devices and users. This makes Azure
+            Spatial Anchors a powerful technology for applications such as
+            indoor navigation, Mixed Reality experiences, and industrial
+            applications.<sup>[1]</sup>
+          </p>
+        </section>
+
+        <section id="how-anchors-work">
+          <h1 class="c-ucdp__title">How do Azure Spatial Anchors work on the HoloLens 2?</h1>
+          <p>
+            On the HoloLens 2, Azure Spatial Anchors uses the device's sensors
+            and cameras to recognize physical objects in the environment and
+            place virtual anchors on them. These anchors are stored in the
+            cloud, so they remain accessible to other users and devices with
+            appropriate permissions. When an anchor is recognized, the HoloLens
+            can project it into the correct position by scanning the environment
+            and comparing it to the stored reference points.<sup>[2]</sup>
+          </p>
+        </section>
+
+        <section id="tracking-indoor-locations">
+          <h1 class="c-ucdp__title">How can we track indoor locations with Azure Spatial Anchors?</h1>
+          <h2 class="c-ucdp__title__smaller">Cloud Anchor-Predefined Path Approach</h2>
+          <p>
+            With the Cloud Anchor-Predefined Path Approach, it is not necessary
+            to have a detailed model of the building or to use an algorithm that
+            generates a path. However, an Internet connection is required. This
+            uses Azure Spatial Anchors to anchor waypoints. Since this is an
+            online system, there must be a connection to upload and download
+            these anchors to the cloud.
+          </p>
+          <p>
+            An advantage of this approach is that the positions of the waypoints
+            remain the same in different instances of the app. This means that
+            the anchors do not have to be reset each time. Moreover, these
+            anchors can be shared by multiple devices, allowing different users
+            to use the app on various devices at the same time.
+          </p>
+          <p>
+            The paths are preset. In some cases, no Internet connection is
+            needed after the spatial anchor is loaded. However, if more than one
+            spatial anchor is used, a stable Internet connection is
+            required.<sup>[3]</sup>
+          </p>
+        </section>
+
+        <section id="azure-spatial-anchor-watcher">
+          <h1 class="c-ucdp__title">Azure Spatial Anchor Watcher</h1>
+          <p>
+            The Azure Spatial Anchor Watcher is a built-in feature of the
+            HoloLens 2 that can detect and track spatial anchors in the physical
+            world. It provides an API that allows developers to invoke the Azure
+            Spatial Anchors service and query spatial anchors based on
+            predetermined criteria, such as distance, orientation or specific
+            anchor IDs.
+          </p>
+          <p>
+            To use this system, developers must first start a session and
+            connect to the Azure Spatial Anchors service. They then create a
+            Watcher object that continuously scans the anchors in the
+            environment and notifies the developer of new anchors as they are
+            discovered.<sup>[4]</sup>
+          </p>
+        </section>
+
+        <section id="spawning-waypoints">
+          <h1 class="c-ucdp__title">Spawning Waypoints</h1>
+          <p>
+            Waypoints are instantiated by the Azure Spatial Anchor Watcher,
+            retrieving anchor IDs from the database and spawning the waypoints
+            according to the specified order. This is done in Unity by using the
+            instantiate function.
+          </p>
+          <h2 class="c-ucdp__title__smaller">Instantiate</h2>
+          <p>
+            The instantiate function in Unity creates a copy of an object,
+            similar to the “Duplicate” command in the editor. When cloning a
+            GameObject, the position and rotation can be adjusted. To
+            instantiate a Prefab during execution, the code needs a reference to
+            this Prefab, which can be assigned as a public variable in the
+            Inspector.
+          </p>
+        </section>
+
+        <section id="how-nav">
+          <h1 class="c-ucdp__title">How can a 3D avatar correctly navigate to a location?</h1>
+          <p>
+            One possible method is to use preset paths, using Azure Spatial
+            Anchors to capture waypoints. These waypoints are stored in the
+            cloud and can be accessed by multiple users. The 3D avatar can be
+            spawned by the Unity engine and navigate to these waypoints using
+            features such as MoveTowards and RotateTowards.<sup>[5], [6]</sup>
+          </p>
+        </section>
+
+        <section id="application-description">
+          <h1 class="c-ucdp__title">Application Description</h1>
+          <p>
+            The application guides users with a 3D avatar along a predefined
+            path, where the backbone of the application is Azure Spatial
+            Anchors. These anchors store locations in the cloud, based on
+            environmental data provided by the HoloLens 2.
+          </p>
+        </section>
+
+        <section id="architecture">
+          <h1 class="c-ucdp__title">Architecture</h1>
+          <p>
+            The architecture consists of a Unity application that runs on the
+            HoloLens 2 and communicates with Azure services via an Azure
+            Function App and CosmosDB. Azure Spatial Anchors are stored in the
+            cloud and later retrieved by the HoloLens 2. The system compares
+            environmental data with the anchors to determine position.
+          </p>
+        </section>
+
+        <section id="technologies">
+          <h1 class="c-ucdp__title">Underlying Technology</h1>
+          <ul>
+            <li>
+              <strong>Unity:</strong> A 2D/3D engine for developing games and
+              apps, especially focused on creating interactive and immersive
+              experiences in mixed reality.<sup>[7]</sup>
+            </li>
+            <li>
+              <strong>OpenXR:</strong> An open standard for VR/AR apps, allowing
+              developers to work across multiple platforms and devices.<sup
+                >[8]</sup
+              >
+            </li>
+            <li>
+              <strong>MRTK (Mixed Reality Toolkit):</strong> A set of tools and
+              components for building mixed reality applications, originally
+              developed by Microsoft for the HoloLens.<sup>[9]</sup>
+            </li>
+            <li>
+              <strong>Azure Spatial Anchors:</strong> A cloud-based platform
+              that maps physical spaces and creates virtual reference points,
+              which can be used for applications such as indoor navigation and
+              collaborative mixed reality experiences.<sup>[1]</sup>
+            </li>
+          </ul>
+        </section>
+
+        <section id="setup">
+          <h1 class="c-ucdp__title">Setup</h1>
+          <h2 class="c-ucdp__title__smaller">Azure Spatial Anchors</h2>
+          <p>
+            The Azure Spatial Anchors Service is set up through the Azure
+            Portal, after which the SDK must be installed. Although testing via
+            holographic remoting was initially problematic, it was eventually
+            resolved by building directly to the HoloLens 2.
+          </p>
+          <div class="image-container">
+            <img
+              src="imgs/AzureAnchorResource.png"
+              alt="Azure Spatial Anchors"
+              class="image-class"
+            />
+            <p class="image-description">
+              This image shows the setup of Azure Spatial Anchors.
+            </p>
+          <h2 class="c-ucdp__title__smaller">MRTK and Unity</h2>
+          <p>
+            The Unity project is set up with specific settings for the HoloLens
+            2. The necessary packages are imported using the Mixed Reality
+            Feature Tool, after which the application can be developed.<sup
+              >[10]</sup
+            >
+          </p>
+          <div class="image-container">
+            <img
+              src="imgs/PackagesAzureSpatialAnchors.png"
+              alt="MRTK Setup"
+              class="image-class"
+            />
+            <p class="image-description">
+              This image shows the setup of the Mixed Reality Toolkit.
+            </p>
+
+            <div class="image-container">
+              <img
+                src="imgs/Packages.png"
+                alt="Unity Setup"
+                class="image-class"
+              />
+              <p class="image-description">
+                This image shows the setup of the Mixed Reality Toolkit.
+              </p>
+            </div>
+
+            <div class="image-container">
+              <img
+                src="imgs/Credentials.png"
+                alt="Unity Setup"
+                class="image-class"
+              />
+              <p class="image-description">
+                This image shows the setup of the Credentials.
+              </p>
+        </section>
+
+        <section id="flow">
+          <h1 class="c-ucdp__title">Flow</h1>
+          <h2 class="c-ucdp__title__smaller">Azure Spatial Anchor In Code</h2>
+          <p>
+            The implementation of Azure Spatial Anchors in code is based on the
+            official Microsoft documentation, but adapted to specific needs. The
+            main components and processes are described below.
+          </p>
+          <h3>Creating Azure Spatial Anchors</h3>
+          <p>
+            Creating a spatial anchor begins with the Add Anchor Button, to
+            which an OnClick event is attached. This event calls an async
+            function that performs the CreateAnchor task. This function performs
+            three tasks:
+          </p>
+          <ul>
+            <li>Placing a new anchor.</li>
+            <li>Creating and storing this anchor in the cloud.</li>
+            <li>Saving the anchor IDs for later use.</li>
+          </ul>
+          <h3>Placing a new anchor</h3>
+          <p>
+            The anchor is placed half a meter below the camera. The position of
+            the anchor is defined in the code.
+          </p>
+          <div class="image-container">
+            <img
+              src="imgs/CodePositionAnchor.png"
+              alt="Code Position Anchor"
+              class="image-class"
+            />
+            <p class="image-description">
+              This image shows the process of placing an Azure Spatial Anchor.
+            </p>
+          <h3>Creating and storing an anchor in the cloud</h3>
+          <p>
+            Once an anchor is placed, it is converted to an Azure Spatial
+            Anchor. Once sufficient environment data has been collected, the
+            anchor is uploaded to the cloud. After a successful upload, the
+            application returns an Anchor ID.
+          </p>
+          <h3>Storing anchor IDs in the cloud for later use</h3>
+          <p>
+            The received anchor ID is converted to an object that contains both
+            the anchor ID and the anchor name. This data is then uploaded via
+            UnityWebRequest to a Cosmos DB database.
+          </p>
+          <div class="image-container">
+            <img
+              src="imgs/CodeCreateAndSaveAnchor.png"
+              alt="Code Create And Save Anchor"
+              class="image-class"
+            />
+            <p class="image-description">
+              This image shows the process of creating and storing Azure Spatial
+              Anchors.
+            </p>
+          </div>
+
+          <div class="image-container">
+            <img
+              src="imgs/SaveAnchors.png"
+              alt="Save Anchor"
+              class="image-class"
+            />
+            <p class="image-description">
+              This image shows the process of creating an Azure Spatial Anchor.
+            </p>
+          <h2 class="c-ucdp__title__smaller">Azure Spatial Path Anchor in Code</h2>
+          <p>
+            No special button is required when creating Spatial Path Anchors.
+            These anchors are usually placed beforehand by an administrator to
+            define a path. The main difference between regular Azure Spatial
+            Anchors and Path Anchors is that with the latter, a sequence of
+            anchors is maintained. A step count is used to indicate the anchor's
+            position within the path so that the order can be retrieved later.
+          </p>
+        </section>
+
+        <section id="api-cosmosdb">
+          <h1 class="c-ucdp__title">API and CosmosDB</h1>
+          <p>
+            Azure solutions are used to store and manage anchors. By keeping
+            everything within the Azure ecosystem, all components can be managed
+            centrally. An Azure Function App is used as an API with HTTPTriggers
+            for storing and retrieving anchors. The main functions are:
+          </p>
+          <ul>
+            <li>Storing Azure Spatial Anchors.</li>
+            <li>Retrieve Azure Spatial Anchors.</li>
+            <li>Storing Path Anchors.</li>
+            <li>Retrieval of Path Anchors.</li>
+          </ul>
+          <p>
+            A distinction is made between regular Azure Spatial Anchors and Path
+            Anchors for ease of use. In the Cosmos DB, they are stored
+            separately in different containers.
+          </p>
+        </section>
+
+        <section id="anchors-path-retrieval">
+          <h1 class="c-ucdp__title">Anchors and Path retrieval</h1>
+          <p>
+            Anchors retrieval is done in the Start function, one of the first
+            functions executed in Unity. Here, a coroutine is called to ensure
+            that the lists of both Azure Spatial Anchors and Path Anchors are
+            fully loaded before further functions are executed.
+          </p>
+          <p>
+            The obtained anchor IDs are then passed to the Anchor Watcher, which
+            scans the environment to see if it matches the previously collected
+            environment data. If there is a match, the event
+            SpatialAnchorManager_AnchorLocated is triggered. This event
+            determines whether the anchor found is a regular anchor or a path
+            anchor, then executes specific actions based on the type.
+          </p>
+          <div class="image-container">
+            <img
+              src="imgs/InstantAnchor.png"
+              alt="Instantiate Anchor"
+              class="image-class"
+            />
+            <p class="image-description">
+              This image shows the process of retrieving Azure Spatial Path
+              Anchors.
+            </p>
+          <div class="image-container">
+            <img
+              src="imgs/RetrieveAnchors.png"
+              alt="Flow Get Path Anchor"
+              class="image-class"
+            />
+            <p class="image-description">
+              This image shows the process of retrieving Azure Spatial Path
+              Anchors.
+            </p>
+          </div>
+        </section>
+        <section id="navigating-avatar">
+          <h1 class="c-ucdp__title">Navigating the 3D Avatar</h1>
+          <p>
+            Before the 3D avatar can navigate, a location must first be
+            selected. Since predefined paths are used, the locations are known.
+            The list of path anchors is sorted depending on the selected
+            destination. The 3D avatar is then instantiated at the location of
+            the first path anchor, with an offset of -0.5 on the y-axis, so that
+            the avatar hovers above the starting point.
+          </p>
+          <div class="image-container">
+            <img
+              src="imgs/NavigateAvatar.png"
+              alt="Flow Navigate Avatar"
+              class="image-class"
+            />
+            <p class="image-description">
+              This image shows the process of instantiating the 3D avatar.
+            </p>
+        </section>
+        <section id="spawning-avatar">
+          <h1 class="c-ucdp__title">Spawning the 3D Avatar</h1>
+          <p>
+            The 3D avatar navigates through the list of path anchors retrieved
+            from the SpatialAnchorManagerObject. The Update function calculates
+            the distance between the HoloLens 2's camera and the avatar. The
+            avatar does not move to the next anchor until the camera is within a
+            radius of 1.5 meters of the avatar. If it is, the position of the
+            next anchor in the list is calculated and the avatar moves toward
+            it.
+          </p>
+          <p>
+            Once it arrives at an anchor, it checks if it is the last anchor in
+            the list. If it is the case, the avatar is destroyed and a
+            notification appears to let the user know that the destination has
+            been reached.
+          </p>
+
+          <div class="image-container">
+            <img
+              src="imgs/SpawnAvatar.png"
+              alt="Flow Move Avatar"
+              class="image-class"
+            />
+            <p class="image-description">
+              This image shows the process of moving the 3D avatar.
+            </p>
+        </section>
+        <section id="conclusion">
+          <h1 class="c-ucdp__title">Conclusion</h1>
+          <p>
+            In conclusion to the question, “How can a 3D avatar navigate indoors
+            using Azure Spatial Anchors on the HoloLens 2?”, it was found that a
+            combination of Azure Spatial Anchors and services such as: CosmosDB
+            as a database and Azure Function App as an API, can be successfully
+            used to store a preset path. This preset path can be easily followed
+            by the 3D avatar using built-in functions such as 'rotatetowards'
+            and 'movetowards'. The developed solution functions well as a proof
+            of concept and demonstrates the power and usability of Azure Spatial
+            Anchors. However, to use it at large scale, some modifications are
+            required.
+          </p>
+          <p>
+            All in all, this research has clearly demonstrated how a 3D avatar
+            can successfully navigate. Although there is room for improvement at
+            a larger scale, the research provides a solid foundation for further
+            developments.
+          </p>
+        </section>
+        <section id="sources">
+          <h1 class="c-ucdp__title">Sources</h1>
+          <ul>
+            <li>
+              [1] pamistel, “Azure Spatial Anchors overview - Azure Spatial
+              Anchors.” Accessed: Aug. 26, 2024. [Online]. Available:
+              <a
+                href="https://learn.microsoft.com/en-us/azure/spatial-anchors/overview"
+                >https://learn.microsoft.com/en-us/azure/spatial-anchors/overview</a
+              >
+            </li>
+            <li>
+              [2] Microsoft Developer, Developing Mobile Augmented Reality (AR)
+              Applications with Azure Spatial Anchors - BRK2034, (May 14, 2019).
+              Accessed: Aug. 26, 2024. [Online Video]. Available:
+              <a href="https://www.youtube.com/watch?v=CVmfP8TaqNU"
+                >https://www.youtube.com/watch?v=CVmfP8TaqNU</a
+              >
+            </li>
+            <li>
+              [3] B. Liu, L. Ding, S. Wang, and L. Meng, “Designing Mixed
+              Reality-Based Indoor Navigation for User Studies,” KN J. Cartogr.
+              Geogr. Inf., vol. 72, no. 2, pp. 129–138, Jun. 2022, doi:
+              10.1007/s42489-022-00108-4.
+            </li>
+            <li>
+              [4] pamistel, “Create & locate anchors in Unity - Azure Spatial
+              Anchors.” Accessed: Aug. 26, 2024. [Online]. Available:
+              <a
+                href="https://learn.microsoft.com/en-us/azure/spatial-anchors/how-tos/create-locate-anchors-unity"
+                >https://learn.microsoft.com/en-us/azure/spatial-anchors/how-tos/create-locate-anchors-unity</a
+              >
+            </li>
+            <li>
+              [5] U. Technologies, “Unity - Scripting API: Vector3.MoveTowards.”
+              Accessed: Aug. 26, 2024. [Online]. Available:
+              <a
+                href="https://docs.unity3d.com/ScriptReference/Vector3.MoveTowards.html"
+                >https://docs.unity3d.com/ScriptReference/Vector3.MoveTowards.html</a
+              >
+            </li>
+            <li>
+              [6] U. Technologies, “Unity - Scripting API:
+              Vector3.RotateTowards.” Accessed: Aug. 26, 2024. [Online].
+              Available:
+              <a
+                href="https://docs.unity3d.com/ScriptReference/Vector3.RotateTowards.html"
+                >https://docs.unity3d.com/ScriptReference/Vector3.RotateTowards.html</a
+              >
+            </li>
+            <li>
+              [7] kexugit, “Unity - Developing Your First Game with Unity and
+              C#.” Accessed: Aug. 26, 2024. [Online]. Available:
+              <a
+                href="https://learn.microsoft.com/en-us/archive/msdn-magazine/2014/august/unity-developing-your-first-game-with-unity-and-csharp"
+                >https://learn.microsoft.com/en-us/archive/msdn-magazine/2014/august/unity-developing-your-first-game-with-unity-and-csharp</a
+              >
+            </li>
+            <li>
+              [8] thetuvix, “OpenXR - Mixed Reality.” Accessed: Aug. 26, 2024.
+              [Online]. Available:
+              <a
+                href="https://learn.microsoft.com/en-us/windows/mixed-reality/develop/native/openxr"
+                >https://learn.microsoft.com/en-us/windows/mixed-reality/develop/native/openxr</a
+              >
+            </li>
+            <li>
+              [9] lolambean, “MRTK2-Unity Developer Documentation - MRTK 2.”
+              Accessed: Aug. 26, 2024. [Online]. Available:
+              <a
+                href="https://learn.microsoft.com/en-us/windows/mixed-reality/mrtk-unity/mrtk2/?view=mrtkunity-2022-05"
+                >https://learn.microsoft.com/en-us/windows/mixed-reality/mrtk-unity/mrtk2/?view=mrtkunity-2022-05</a
+              >
+            </li>
+            <li>
+              [10] “Mixed Reality course for MCT,” HackMD. Accessed: Aug. 26,
+              2024. [Online]. Available:
+              <a
+                href="https://hackmd.io/@NathanSegers/HyHqU3biY/https%3A%2F%2Fhackmd.io%2F%40wivan%2FSyiQZqm-s"
+                >https://hackmd.io/@NathanSegers/HyHqU3biY/https%3A%2F%2Fhackmd.io%2F%40wivan%2FSyiQZqm-s</a
+              >
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
